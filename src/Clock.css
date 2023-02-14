@@ -1,6 +1,43 @@
 .clock {
-  position: fixed;
   height: 200px;
   width: 200px;
-  color: #fff;
+  background-color: black;
+  border-radius: 50%;
+}
+.clock-face {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hand {
+  background-color: white;
+}
+.hour-hand {
+  height: 40px;
+  width: 4px;
+  position: absolute;
+  top: 60px;
+}
+.min-hand {
+  height: 70px;
+  width: 2px;
+  position: absolute;
+  top: 30px;
+}
+.sec-hand {
+  height: 95px;
+  width: 1px;
+  position: absolute;
+  top: 5px;
+}
+.circle {
+  height: 5px;
+  width: 5px;
+  background-color: gray;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: absolute;
 }
