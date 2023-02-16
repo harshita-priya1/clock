@@ -8,27 +8,27 @@ function Clock() {
   const [sec, setSec] = useState(0);
 
   useEffect(() => {
-    let dt = new Date();
-    dt = dt.toLocaleTimeString(navigator.language, {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-    let h = dt.split(":")[0];
-    const m = dt.split(":")[1];
-    const s = dt.split(":")[2];
+    const dt = new Date();
+    let h = dt.getHours();
+    const m = dt.getMinutes();
+    const s = dt.getSeconds();
     if (h > 12) {
       h = h - 12;
     }
-    setHour((hour) => hour + h * 30 + (m * 1) / 2 + (s * 1) / 120);
-    setMin((min) => min + m * 6 + (s * 1) / 10);
-    setSec((sec) => sec + s * 6);
+    setHour(h * 30 + (m * 1) / 2 + (s * 1) / 120);
+    setMin(m * 6 + (s * 1) / 10);
+    setSec(s * 6);
+    console.log(hour, min, sec);
 
-    setInterval(() => {
+    const interval = setInterval(() => {
       setHour((hour) => hour + 1 / 120);
       setMin((min) => min + 1 / 10);
       setSec((sec) => sec + 6);
     }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
